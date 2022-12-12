@@ -1,0 +1,50 @@
+#include "stdio.h"
+#include "string.h"
+
+int main()
+{
+    FILE *fptr;
+    char word[100];
+    char name;
+    char *filename = "word.txt";
+    char findWord1[] = "winhtut";
+    char findWord2[] = "NationalCyberCity";
+    int count1 = 0;
+    int count2 = 0;
+
+    fptr = fopen(filename, "r");
+
+    do
+    {
+        name = fscanf(fptr, "%s", word);
+        if(strcmp(word, findWord1) == 0)
+        {
+
+            count1++;
+        }
+        if(strcmp(word,  findWord2) == 0)
+        {
+
+            count2++;
+        }
+
+    } while (name != EOF);
+
+    if(count2 == 0){
+        printf("'%s' not found in %s\n",  findWord1, filename);
+        printf("'%s' not found in %s\n",  findWord2, filename);
+    }
+
+    else
+    {
+        printf("The word of '%s' is found.\n",  findWord1);
+        printf("The Time of 'winhtut' is : %d times\n", count1);
+        printf("**************************************************\n");
+        printf("The word of '%s' is found.\n", findWord2);
+        printf("The Time of 'NationalCyberCity' is : %d time\n", count2);
+    }
+
+    fclose(fptr);
+
+    return 0;
+}
